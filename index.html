@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaz — Rec Room Archive</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="photos-data.js"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-logo">
+        <img src="RecRoom_Logo_Horizontal.png" alt="Rec Room" />
+      </div>
+      <span class="navbar-title">Archive</span>
+    </div>
+  </nav>
+
+  <!-- BANNER -->
+  <div class="banner-wrap">
+    <img class="banner-img" src="RRphotos/assets/b.jpg" alt="Profile banner" onerror="this.style.display='none'" />
+  </div>
+
+  <!-- PAGE BODY: sidebar + content -->
+  <div class="page-body">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="avatar-wrap">
+        <img src="RRphotos/427i0tbextcpjgsd391et4mu2.jpg" alt="Chaz avatar" class="avatar-img" onerror="this.style.background='#444'" />
+      </div>
+      <h1 class="profile-name">Chaz</h1>
+      <div class="profile-handle">@chazbot</div>
+      <div class="profile-subs">59 Subscribers</div>
+      <div class="profile-bio">
+        Rec Room gave me creativity. Rec Room gave me friends. Rec Room gave me love. Thank you for everything, Rec Room. I will never forget about this game. I remember when I used to be so addicted to Rec Room, I would Wake up, Get on RR, go to sleep. I'm going to miss this game so much...
+      </div>
+      <div class="profile-meta">
+        <span class="meta-icon">📅</span> Joined April 11, 2022
+      </div>
+      <div class="profile-stats-box">
+        <div class="stat-row"><span class="stat-num">267</span><span class="stat-label">Friends</span></div>
+        <div class="stat-row"><span class="stat-num">59</span><span class="stat-label">Subscribers</span></div>
+      </div>
+    </aside>
+
+    <!-- RIGHT CONTENT -->
+    <div class="main-content">
+
+      <!-- TABS -->
+      <div class="tabs-bar">
+        <button class="tab-btn active" data-tab="photos">Photos</button>
+        <button class="tab-btn" data-tab="rooms">Rooms</button>
+        <button class="tab-btn" data-tab="outfits">Avatar Outfits</button>
+        <button class="tab-btn" data-tab="reportcard">Report Card</button>
+        <button class="tab-btn" data-tab="history">History</button>
+      </div>
+
+      <!-- PHOTOS TAB -->
+      <div class="tab-content active" id="tab-photos">
+        <div class="filter-bar">
+          <button class="filter-btn" id="filterToggle">
+            <span class="filter-icon">☰</span> Filter Photos
+          </button>
+          <span class="photo-count" id="photoCount"></span>
+        </div>
+
+        <!-- FILTER PANEL -->
+        <div class="filter-panel hidden" id="filterPanel">
+          <div class="filter-section">
+            <div class="filter-section-title">Date / Date Range</div>
+            <div class="filter-dates">
+              <label class="filter-check-label">
+                <input type="checkbox" id="useAfter" /> After
+              </label>
+              <input type="date" id="afterDate" class="date-input" disabled />
+              <label class="filter-check-label">
+                <input type="checkbox" id="useBefore" /> Before
+              </label>
+              <input type="date" id="beforeDate" class="date-input" disabled />
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="filter-section-title">Sort By</div>
+            <select id="sortBy" class="sort-select">
+              <option value="newest" selected>Newest to Oldest</option>
+              <option value="oldest">Oldest to Newest</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button class="btn-reset" id="filterReset">Reset</button>
+            <div class="filter-actions-right">
+              <button class="btn-apply" id="filterApply">Apply</button>
+              <button class="btn-close" id="filterClose">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-grid" id="photoGrid">
+          <div class="loading-msg">Loading photos…</div>
+        </div>
+        <div class="load-more-wrap">
+          <button class="btn-load-more hidden" id="loadMoreBtn">Load More</button>
+        </div>
+      </div>
+
+      <!-- ROOMS TAB -->
+      <div class="tab-content" id="tab-rooms">
+        <div class="empty-tab">
+          <div class="empty-icon">[|=)]</div>
+          <div class="empty-text">Nothing here yet, will release soon [|=)]</div>
+        </div>
+      </div>
+
+      <!-- REPORT CARD TAB -->
+      <div class="tab-content" id="tab-reportcard">
+        <div class="reportcard-wrap">
+          <img src="RRphotos/assets/report_card.jpg" alt="Chaz Report Card" class="reportcard-img" />
+          <a class="sign-btn" href="https://rryearbook.alexagirl.xyz/card/6fe9124943ce43a4ae0fbabad96a8a58" target="_blank" rel="noopener">✍️ Sign my Report Card</a>
+        </div>
+      </div>
+
+      <!-- HISTORY TAB -->
+      <div class="tab-content" id="tab-history">
+        <div class="empty-tab">
+          <div class="empty-icon">[|=)]</div>
+          <div class="empty-text">Nothing here yet, will release soon [|=)]</div>
+        </div>
+      </div>
+
+      <!-- AVATAR OUTFITS TAB -->
+      <div class="tab-content" id="tab-outfits">
+        <div class="photo-grid" id="outfitGrid">
+          <div class="loading-msg">Loading outfits…</div>
+        </div>
+      </div>
+
+    </div><!-- /main-content -->
+  </div><!-- /page-body -->
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox hidden" id="lightbox">
+    <div class="lightbox-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+      <div class="lightbox-img-wrap">
+        <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      </div>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+      <div class="lightbox-meta" id="lightboxMeta"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

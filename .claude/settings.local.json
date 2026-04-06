@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find C:/Users/Branislav/Documents/the_chaz_rr_archive -name banner*)"
+    ]
+  }
+}
